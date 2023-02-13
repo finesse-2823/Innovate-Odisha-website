@@ -81,8 +81,8 @@
       <h1 class="mb-4 pb-0">The biggest<br><span>Maker</span> Hackathon</h1>
       <p class="mb-4 pb-0">19 - 20 February, 2023 <br> Nalanda Institute of Technology, Bhubaneswar <span style="color: red;"><br><br>Phase 1 results will be announced on 15<sup>th</sup> February 2023, 6:00 PM IST </span></p>
       <!-- <a href="https://youtu.be/H0XkLsEInAM" class="glightbox play-btn mb-4"></a> -->
-      <div><a href="http://bit.ly/innoodisha" target="_blank" class="about-btn scrollto">Register Now</a>
-      <a href="https://t.me/innovateodisha" target="_blank" class="about-btn scrollto">Join Community</a></div>
+      <div class="popup" onclick="myFunction()"><div class="about-btn scrollto">Register Now <span class="popuptext" id="myPopup">Registrations are closed!</span></div></div>
+      <div><a href="https://t.me/innovateodisha" target="_blank" class="about-btn scrollto">Join Telegram Community</a></div>
     </div>
   </section><!-- End Hero Section -->
 
@@ -1265,6 +1265,11 @@
     window.onload(
       console.log("loaded")
     )
+
+    function myFunction() {
+        var popup = document.getElementById("myPopup");
+        popup.classList.toggle("show");
+    }
   </script>
 </body>
 
