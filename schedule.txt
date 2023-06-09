@@ -1,0 +1,164 @@
+<section id="schedule" class="section-with-bg">
+      <div class="container" data-aos="fade-up">
+        <div class="section-header">
+          <h2>Event Schedule</h2>
+          <p>Here is our event schedule</p>
+        </div>
+
+        <ul class="nav nav-tabs" role="tablist" data-aos="fade-up" data-aos-delay="100">
+          <li class="nav-item">
+            <a class="nav-link active" href="#day-1" role="tab" data-bs-toggle="tab">Day 1</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#day-2" role="tab" data-bs-toggle="tab">Day 2</a>
+          </li>
+
+        </ul>
+
+        <h3 class="sub-heading">Know when and where to be with our event schedule.</h3>
+
+        <div class="tab-content row justify-content-center" data-aos="fade-up" data-aos-delay="200">
+
+          <!-- Schdule Day 1 -->
+          <div role="tabpanel" class="col-lg-9 tab-pane fade show active" id="day-1">
+
+            <div class="row schedule-item">
+              <div class="col-md-2"><time>07:30 AM</time></div>
+              <div class="col-md-10">
+                <h4>Check-in</h4>
+                <p>Team onboarding and breakfast.</p>
+              </div>
+            </div>
+
+            <div class="row schedule-item">
+              <div class="col-md-2"><time>08:30 AM</time></div>
+              <div class="col-md-10">
+                <!-- <div class="speaker">
+                  <img src="assets/img/speakers/1.jpg" alt="Brenden Legros">
+                </div> -->
+                <h4>Guest arrival</h4>
+                <p>A warm welcome to all our guests. We're so glad you're here.</p>
+              </div>
+            </div>
+
+            <div class="row schedule-item">
+              <div class="col-md-2"><time>09:30 AM</time></div>
+              <div class="col-md-10">
+                <!-- <div class="speaker">
+                  <img src="assets/img/speakers/2.jpg" alt="Hubert Hirthe">
+                </div> -->
+                <h4>Inauguration</h4>
+                <p>Witness the start of something great.</p>
+              </div>
+            </div>
+
+            <div class="row schedule-item">
+              <div class="col-md-2"><time>11:00 AM</time></div>
+              <div class="col-md-10">
+                <!-- <div class="speaker">
+                  <img src="assets/img/speakers/3.jpg" alt="Cole Emmerich">
+                </div> -->
+                <h4>Hackathon begins!</span></h4>
+                <p>Get! Set!! Make!!!</p>
+              </div>
+            </div>
+
+            <div class="row schedule-item">
+              <div class="col-md-2"><time>02:00 PM</time></div>
+              <div class="col-md-10">
+                <!-- <div class="speaker">
+                  <img src="assets/img/speakers/4.jpg" alt="Jack Christiansen">
+                </div> -->
+                <h4>Lunch</span></h4>
+                <p>Recharge yourselves for some very long sitting.</p>
+              </div>
+            </div>
+
+            <div class="row schedule-item">
+              <div class="col-md-2"><time>06:00 PM</time></div>
+              <div class="col-md-10">
+                <!-- <div class="speaker">
+                  <img src="assets/img/speakers/5.jpg" alt="Alejandrin Littel">
+                </div> -->
+                <h4>Founders' talk</h4>
+                <p>Know where the industry is going.</p>
+              </div>
+            </div>
+
+            <div class="row schedule-item">
+              <div class="col-md-2"><time>09:00 PM</time></div>
+              <div class="col-md-10">
+                <!-- <div class="speaker">
+                  <img src="assets/img/speakers/6.jpg" alt="Willow Trantow">
+                </div> -->
+                <h4>Dinner</h4>
+                <p>bon appetit!</p>
+              </div>
+            </div>
+
+          </div>
+          <!-- End Schdule Day 1 -->
+
+          <!-- Schdule Day 2 -->
+          <div role="tabpanel" class="col-lg-9  tab-pane fade" id="day-2">
+
+            <div class="row schedule-item">
+              <div class="col-md-2"><time>12:00 AM</time></div>
+              <div class="col-md-10">
+                <!-- <div class="speaker">
+                  <img src="assets/img/speakers/1.jpg" alt="Brenden Legros">
+                </div> -->
+                <h4>Music x Energy</h4>
+                <p>Hands in the air, not on the keyboard</p>
+              </div>
+            </div>
+
+            <div class="row schedule-item">
+              <div class="col-md-2"><time>04:00 AM</time></div>
+              <div class="col-md-10">
+                <!-- <div class="speaker">
+                  <img src="assets/img/speakers/2.jpg" alt="Hubert Hirthe">
+                </div> -->
+                <h4>Community Talk</h4>
+                <p>We build together, we grow together.</p>
+              </div>
+            </div>
+
+            <div class="row schedule-item">
+              <div class="col-md-2"><time>11:00 AM</time></div>
+              <div class="col-md-10">
+                <!-- <div class="speaker">
+                  <img src="assets/img/speakers/4.jpg" alt="Jack Christiansen">
+                </div> -->
+                <h4>Hackathon Ends!</h4>
+                <p>You may rest now.</p>
+              </div>
+            </div>
+
+            <div class="row schedule-item">
+              <div class="col-md-2"><time>01:00 PM</time></div>
+              <div class="col-md-10">
+                <!-- <div class="speaker">
+                  <img src="assets/img/speakers/5.jpg" alt="Alejandrin Littel">
+                </div> -->
+                <h4>Lunch</h4>
+                <p>Great food after great work.</p>
+              </div>
+            </div>
+
+            <div class="row schedule-item">
+              <div class="col-md-2"><time>02:00 PM</time></div>
+              <div class="col-md-10">
+                <!-- <div class="speaker">
+                  <img src="assets/img/speakers/6.jpg" alt="Willow Trantow">
+                </div> -->
+                <h4>Prize distribution & Closing ceremony</h4>
+                <p>You never lose. You either win or learn.</p>
+              </div>
+            </div>
+
+          </div>
+          <!-- End Schdule Day 2 -->
+        </div>
+      </div>
+    </section>
