@@ -242,84 +242,84 @@
     });
   });
 
-  // Theme description
-  const theme1 = document.getElementById("theme1");
-  theme1.addEventListener("click", (e) => {
-    const details = e.target.parentElement.querySelector("h3");
-    console.log(details);
-    const description = document.getElementById("description");
-    if (details.innerText === "Generative AI") {
-      if (description.innerText === "") {
-        description.innerHTML =
-          "<h4>Problem Statement:</h4><ul><li>Interactive Storytelling Platform: Create a GenAI-based platform that allows users to co-create interactive stories, where the narrative evolves based on user choices and inputs.</li><li>Automated Creative Advertising: Create a GenAI tool that generates creative advertising campaigns, including visuals and copy, tailored to specific target audiences.</li><li>AI-Based Interactive Learning Modules: Create an educational platform where GenAI generates interactive learning modules, quizzes, and exercises based on the student's progress and needs.</li></ul>";
-        description.style.height = "0";
-        description.style.transition = "height 0.5s ease";
-        description.style.height = "auto";
-      } else {
-        description.style.height = "0";
-        description.style.transition = "height 0.5s ease";
-        description.innerHTML = "";
-      }
-    }
-  });
+  // // Theme description
+  // const theme1 = document.getElementById("theme1");
+  // theme1.addEventListener("click", (e) => {
+  //   const details = e.target.parentElement.querySelector("h3");
+  //   console.log(details);
+  //   const description = document.getElementById("description");
+  //   if (details.innerText === "Generative AI") {
+  //     if (description.innerText === "") {
+  //       description.innerHTML =
+  //         "<h4>Problem Statement: Generative AI</h4><ol><li>Interactive Storytelling Platform: Create a GenAI-based platform that allows users to co-create interactive stories, where the narrative evolves based on user choices and inputs.</li><li>Automated Creative Advertising: Create a GenAI tool that generates creative advertising campaigns, including visuals and copy, tailored to specific target audiences.</li><li>AI-Based Interactive Learning Modules: Create an educational platform where GenAI generates interactive learning modules, quizzes, and exercises based on the student's progress and needs.</li></ol>";
+  //       description.style.height = "0";
+  //       description.style.transition = "height 0.5s ease";
+  //       description.style.height = "auto";
+  //     } else {
+  //       description.style.height = "0";
+  //       description.style.transition = "height 0.5s ease";
+  //       description.innerHTML = "";
+  //     }
+  //   }
+  // });
 
-  const theme2 = document.getElementById("theme2");
-  theme2.addEventListener("click", (e) => {
-    const details = e.target.parentElement.querySelector("h3");
-    console.log(details);
-    const description = document.getElementById("description");
-    if (details.innerText === "Climate Tech") {
-      if (description.innerText === "") {
-        description.innerHTML =
-          "<h4>Problem Statement:</h4><ul><li>Interactive Storytelling Platform: Create a GenAI-based platform that allows users to co-create interactive stories, where the narrative evolves based on user choices and inputs.</li><li>Automated Creative Advertising: Create a GenAI tool that generates creative advertising campaigns, including visuals and copy, tailored to specific target audiences.</li><li>AI-Based Interactive Learning Modules: Create an educational platform where GenAI generates interactive learning modules, quizzes, and exercises based on the student's progress and needs.</li></ul>";
-        description.style.height = "0";
-        description.style.transition = "height 0.5s ease";
-        description.style.height = "auto";
-      } else {
-        description.style.height = "0";
-        description.style.transition = "height 0.5s ease";
-        description.innerHTML = "";
-      }
-    }
-  });
+  // const theme2 = document.getElementById("theme2");
+  // theme2.addEventListener("click", (e) => {
+  //   const details = e.target.parentElement.querySelector("h3");
+  //   console.log(details);
+  //   const description = document.getElementById("description");
+  //   if (details.innerText === "Climate Tech") {
+  //     if (description.innerText === "") {
+  //       description.innerHTML =
+  //         "<h4>Problem Statement: Climate Tech</h4><ol><li>Urban Green Space Optimization: Create a tool that helps city planners identify and optimize locations for urban green spaces, balancing environmental benefits with urban development needs.</li><li>Sustainable Packaging Alternatives: Develop new materials or systems for packaging that reduce environmental impact, focusing on recyclability, biodegradability, and resource efficiency.</li><li>Wildlife Conservation Through Tech: Design a system that uses drones or sensors to monitor endangered wildlife populations, providing data to conservationists to help protect these species.</li></ol>";
+  //       description.style.height = "0";
+  //       description.style.transition = "height 0.5s ease";
+  //       description.style.height = "auto";
+  //     } else {
+  //       description.style.height = "0";
+  //       description.style.transition = "height 0.5s ease";
+  //       description.innerHTML = "";
+  //     }
+  //   }
+  // });
 
-  const theme3 = document.getElementById("theme3");
-  theme3.addEventListener("click", (e) => {
-    const details = e.target.parentElement.querySelector("h3");
-    console.log(details);
-    const description = document.getElementById("description");
-    if (details.innerText === "Digital Twin") {
-      if (description.innerText === "") {
-        description.innerHTML =
-          "<h4>Problem Statement:</h4><ul><li>Bullet point 1</li><li>Bullet point 2</li><li>Bullet point 3</li></ul>";
-        description.style.height = "0";
-        description.style.transition = "height 0.5s ease";
-        description.style.height = "auto";
-      } else {
-        description.style.height = "0";
-        description.style.transition = "height 0.5s ease";
-        description.innerHTML = "";
-      }
-    }
-  });
+  // const theme3 = document.getElementById("theme3");
+  // theme3.addEventListener("click", (e) => {
+  //   const details = e.target.parentElement.querySelector("h3");
+  //   console.log(details);
+  //   const description = document.getElementById("description");
+  //   if (details.innerText === "Digital Twin") {
+  //     if (description.innerText === "") {
+  //       description.innerHTML =
+  //         "<h4>Problem Statement: Digital Twin</h4><ol><li>City Infrastructure Planning: Design a digital twin of a city’s infrastructure (roads, utilities, public transport) that helps planners test and implement urban development projects.</li><li>Personalized Health Digital Twin: Build a digital twin that models an individual's health data, helping to predict future health issues and tailor preventative care strategies.</li><li>Digital Twin for Water Management: Develop a digital twin of a water distribution network that helps manage water resources efficiently, reducing waste and improving access.</li><li>Digital Twin for Disaster Preparedness: Develop a digital twin of a region prone to natural disasters that helps in planning and optimizing disaster response strategies, reducing damage and saving lives.</li></ol>";
+  //       description.style.height = "0";
+  //       description.style.transition = "height 0.5s ease";
+  //       description.style.height = "auto";
+  //     } else {
+  //       description.style.height = "0";
+  //       description.style.transition = "height 0.5s ease";
+  //       description.innerHTML = "";
+  //     }
+  //   }
+  // });
 
-  const theme4 = document.getElementById("theme4");
-  theme4.addEventListener("click", (e) => {
-    const details = e.target.parentElement.querySelector("h3");
-    console.log(details);
-    const description = document.getElementById("description");
-    if (details.innerText === "Industry Automation") {
-      if (description.innerText === "") {
-        description.innerHTML =
-          "<h4>Problem Statement:</h4><ul><li>Bullet point 1</li><li>Bullet point 2</li><li>Bullet point 3</li></ul>";
-        description.style.height = "0";
-        description.style.transition = "height 0.5s ease";
-        description.style.height = "auto";
-      } else {
-        description.style.height = "0";
-        description.style.transition = "height 0.5s ease";
-        description.innerHTML = "";
-      }
-    }
-  });
+  // const theme4 = document.getElementById("theme4");
+  // theme4.addEventListener("click", (e) => {
+  //   const details = e.target.parentElement.querySelector("h3");
+  //   console.log(details);
+  //   const description = document.getElementById("description");
+  //   if (details.innerText === "Industry Automation") {
+  //     if (description.innerText === "") {
+  //       description.innerHTML =
+  //         "<h4>Problem Statement: Industry Automation</h4><ol><li>Automated Order Fulfillment System: Develop a system that automates the order fulfillment process in warehouses, from picking and packing to shipping, reducing errors and speeding up delivery times.</li><li>Smart Predictive Maintenance Scheduler: Design a predictive maintenance system that schedules maintenance tasks based on equipment usage and performance data, reducing unplanned downtime.</li><li>Human-Robot Collaboration Interface: Develop an intuitive interface that allows humans and robots to collaborate effectively on the factory floor, optimizing workflows and improving safety.</li></ol>";
+  //       description.style.height = "0";
+  //       description.style.transition = "height 0.5s ease";
+  //       description.style.height = "auto";
+  //     } else {
+  //       description.style.height = "0";
+  //       description.style.transition = "height 0.5s ease";
+  //       description.innerHTML = "";
+  //     }
+  //   }
+  // });
 })();
