@@ -743,6 +743,17 @@ h6 {
   transform: scale(20);
 }
 
+#hero2-image {
+  width: 100vw;
+  height: auto;
+  background: url(../img/hero-bg.jpeg) top center;
+  justify-content: center;
+  position: relative;
+  overflow-x:auto;
+  overflow-y:auto;
+}
+
+
 #hero2 .play-btn:hover::before {
   content: "";
   position: absolute;
