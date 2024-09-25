@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="assets/img/favicon.ico" rel="icon" type="image/x-icon">
@@ -203,53 +204,156 @@
   <script src="assets/js/main.js"></script>
 
   
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas2image"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
-    <script>
-      async function generateTicket() {
+<script>
+
+    async function generateTicket() {
         const name = document.getElementById("name").value;
         const team = document.getElementById("team").value;
         const theme = document.getElementById("theme").value;
 
         if (!name || !team || !theme) {
-          alert("Please fill out all fields!");
-          return;
+            alert("Please fill out all fields!");
+            return;
         }
 
-        const ticketUrl = "./assets/template/ticket.pdf";
-        const existingPdfBytes = await fetch(ticketUrl).then((res) =>
-          res.arrayBuffer()
-        );
+        const ticketUrl = './assets/template/ticket.pdf';
+        const existingPdfBytes = await fetch(ticketUrl).then(res => res.arrayBuffer());
 
         const pdfDoc = await PDFLib.PDFDocument.load(existingPdfBytes);
         const font = await pdfDoc.embedFont(PDFLib.StandardFonts.Helvetica);
         const firstPage = pdfDoc.getPages()[0];
-        const fontSize = 12;
-        firstPage.drawText(name, { x: 490, y: 138, size: fontSize, font });
-        firstPage.drawText(team, { x: 490, y: 97, size: fontSize, font });
-        firstPage.drawText(theme, { x: 490, y: 54, size: fontSize, font });
+        const fontSize = 18;
+        firstPage.drawText(name, { x: 150, y: 300, size: fontSize, font });
+        firstPage.drawText(team, { x: 150, y: 270, size: fontSize, font });
+        firstPage.drawText(theme, { x: 150, y: 240, size: fontSize, font });
 
         const pdfBytes = await pdfDoc.save();
-        const blob = new Blob([pdfBytes], { type: "application/pdf" });
+        const blob = new Blob([pdfBytes], { type: 'application/pdf' });
         const url = URL.createObjectURL(blob);
 
-        document.getElementById("ticketPreview").style.display = "block";
-        document.getElementById("ticketImage").src = url;
+        // Generate the PNG version for download
+        convertPdfToPng(url);
 
-        const linkedinCaption =
-          "Hello connections, I'm excited to share that I'll be attending Innovate Odisha 2.0 which is a prestigious state level hackathon which brings mentors, industry leaders and innovators all under one roof.";
+        // Share to LinkedIn with the PDF
+        shareToLinkedIn(blob);
+    }
 
-        const linkedinShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
-          url
-        )}&text=${encodeURIComponent(linkedinCaption)}`;
+    function convertPdfToPng(pdfUrl) {
+        const canvas = document.createElement('canvas');
+        const ctx = canvas.getContext('2d');
+        const img = new Image();
+        img.src = pdfUrl;
+        img.onload = function () {
+            canvas.width = img.width;
+            canvas.height = img.height;
+            ctx.drawImage(img, 0, 0);
+            const pngUrl = canvas.toDataURL('image/png');
 
-        document.getElementById("linkedinShare").href = linkedinShareUrl;
+            // Set the download link for the PNG image
+            document.getElementById("downloadPng").href = pngUrl;
+        };
+    }
 
-        const link = document.createElement("a");
-        link.href = url;
-        link.download = "hackathon_ticket.pdf";
-        link.click();
-      }
-    </script>
+    async function shareToLinkedIn(blob) {
+        // Replace with your LinkedIn access token
+        const accessToken = 'YOUR_ACCESS_TOKEN';
+        const personURN = 'urn:li:person:YOUR_PERSON_URN';
+        const apiUrl = 'https://api.linkedin.com/v2/assets?action=registerUpload';
+
+        // 1. Register the upload
+        const registerUploadResponse = await fetch(apiUrl, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${accessToken}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                registerUploadRequest: {
+                    recipes: [
+                        'urn:li:digitalmediaRecipe:feedshare-image'
+                    ],
+                    owner: personURN,
+                    serviceRelationships: [
+                        {
+                            relationshipType: 'OWNER',
+                            identifier: 'urn:li:userGeneratedContent'
+                        }
+                    ]
+                }
+            })
+        });
+
+        const registerUploadData = await registerUploadResponse.json();
+        const uploadUrl = registerUploadData.value.uploadMechanism.com.linkedin.digitalmedia.uploading.MediaUploadHttpRequest.uploadUrl;
+        const asset = registerUploadData.value.asset;
+
+        // 2. Upload the PDF
+        const formData = new FormData();
+        formData.append('file', blob);
+
+        const uploadResponse = await fetch(uploadUrl, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${accessToken}`,
+            },
+            body: blob
+        });
+
+        if (!uploadResponse.ok) {
+            alert('Failed to upload the asset to LinkedIn.');
+            return;
+        }
+
+        // 3. Post to LinkedIn with the uploaded asset
+        const postText = "Hello connections, I'm excited to share that I'll be attending Innovate Odisha 2.0 which is a prestigious state level hackathon which brings mentors, industry leaders and innovators all under one roof.";
+        const postUrl = 'https://api.linkedin.com/v2/ugcPosts';
+
+        const postResponse = await fetch(postUrl, {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${accessToken}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                author: personURN,
+                lifecycleState: 'PUBLISHED',
+                specificContent: {
+                    'com.linkedin.ugc.ShareContent': {
+                        shareCommentary: {
+                            text: postText
+                        },
+                        shareMediaCategory: 'IMAGE',
+                        media: [
+                            {
+                                status: 'READY',
+                                description: {
+                                    text: 'Hackathon Event Ticket'
+                                },
+                                media: asset,
+                                title: {
+                                    text: 'Hackathon Ticket'
+                                }
+                            }
+                        ]
+                    }
+                },
+                visibility: {
+                    'com.linkedin.ugc.MemberNetworkVisibility': 'PUBLIC'
+                }
+            })
+        });
+
+        if (postResponse.ok) {
+            alert('Successfully shared on LinkedIn!');
+        } else {
+            alert('Failed to share the post on LinkedIn.');
+        }
+    }
+</script>
+
   </body>
 </html>
