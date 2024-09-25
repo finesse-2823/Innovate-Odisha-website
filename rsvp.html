@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="assets/img/favicon.ico" rel="icon" type="image/x-icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800" rel="stylesheet">
+
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="assets/css/style.css" rel="stylesheet">
+    <title>Innovate Odisha RSVP</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #ffffff;
+        color: #000000;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        width: 80%;
+        max-width: 800px;
+        margin: 50px auto;
+        text-align: center;
+      }
+
+      h1 {
+        color: #f18e1f;
+        margin-bottom: 20px;
+      }
+
+      form {
+        background-color: #f9f9f9;
+        padding: 20px;
+        border: 2px solid #000;
+        border-radius: 10px;
+      }
+
+      input,
+      select {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 16px;
+      }
+
+      button {
+        background-color: #f18e1f;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 18px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        background-color: #e27c00;
+      }
+
+      .ticket-preview {
+        margin-top: 30px;
+      }
+
+      .ticket-preview img {
+        max-width: 100%;
+        border: 2px solid #000;
+        border-radius: 10px;
+        margin-top: 20px;
+        display:none;
+      }
+
+      .share-button {
+        margin-top: 20px;
+        background-color: #0077b5;
+        padding: 10px;
+        border-radius: 5px;
+        color: white;
+        text-decoration: none;
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ======= Header ======= -->
+  <header id="header" class="d-flex align-items-center ">
+    <div class="container-fluid container-xxl d-flex align-items-center">
+
+      <div id="logo" class="me-auto">
+        <!-- Uncomment below if you prefer to use a text logo -->
+        <!-- <h1><a href="index.html">The<span>Event</span></a></h1>-->
+        <a href="index.html" class="scrollto"><img loading="lazy" src="assets/img/logo.png" alt="" title=""></a>
+      </div>
+
+      <nav id="navbar" class="navbar order-last order-lg-0">
+        <ul>
+          <li><a class="nav-link scrollto active" href="./index.html">Home</a></li>
+          <!-- <li><a class="nav-link scrollto" href="#about">About</a></li> -->
+          <!-- <li><a class="nav-link scrollto" href="#theme">Themes</a></li> -->
+          <!-- <li><a class="nav-link scrollto" href="#delegate">Speakers</a></li> -->
+          <!-- <li><a class="nav-link scrollto" href="#schedule">Schedule</a></li> -->
+          <!-- <li><a class="nav-link scrollto" href="#venue">Venue</a></li> -->
+          <!-- <li><a class="nav-link scrollto" href="#gallery">Gallery</a></li> -->
+          <!-- <li><a class="nav-link scrollto" href="#prize">Prize</a></li> -->
+          <!-- <li><a class="nav-link scrollto" href="#supporters">Sponsors</a></li> -->
+          <!-- <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
+          <ul>
+            <li><a href="#">Drop Down 1</a></li>
+            <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
+              <ul>
+                <li><a href="#">Deep Drop Down 1</a></li>
+                <li><a href="#">Deep Drop Down 2</a></li>
+                <li><a href="#">Deep Drop Down 3</a></li>
+                <li><a href="#">Deep Drop Down 4</a></li>
+                <li><a href="#">Deep Drop Down 5</a></li>
+              </ul>
+            </li>
+            <li><a href="#">Drop Down 2</a></li>
+            <li><a href="#">Drop Down 3</a></li>
+            <li><a href="#">Drop Down 4</a></li>
+          </ul>
+        </li> -->
+          <!-- <li><a class="nav-link scrollto" href="#fc">FAQ</a></li> -->
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+      <a class="buy-tickets" href="https://t.me/innovateodisha" target="_blank">Join Telegram Community</a>
+
+    </div>
+  </header>
+  <!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero">
+    <div class="hero-container" data-aos="zoom-in" data-aos-delay="100">
+    
+    <!-- rsvp section  -->
+    <div class="container"></div>
+      <h1>Hackathon RSVP</h1>
+
+      <form id="rsvpForm">
+        <input type="text" id="name" placeholder="Enter your Name" required />
+        <input type="text" id="team" placeholder="Enter your Team" required />
+        <select id="theme" required>
+          <option value="">Select theme</option>
+          <option value="Generative AI">Generative AI</option>
+          <option value="Digital Twin">Digital Twin</option>
+          <option value="Industry Automation">Industry Automation</option>
+          <option value="Climate Tech">Climate Tech</option>
+        </select>
+        <button type="button" onclick="generateTicket()">
+          Generate Ticket
+        </button>
+      </form>
+
+      <div class="ticket-preview" id="ticketPreview" style="display: none">
+        <!-- <h2>Your Ticket Preview</h2> -->
+        <img id="ticketImage" src="" alt="Ticket Preview" />
+        <a id="linkedinShare" href="#" class="share-button" target="_blank"
+          >Share on LinkedIn</a
+        >
+      </div>
+    </div>
+
+    <!-- end of rsvp section  -->
+      <!-- <h1 class="mb-4 pb-0">Innovate Odisha - Season&nbsp;2<br><span>28-29 September</span> 2024</h1> -->
+      <!-- <p class="mb-4 pb-0">19 - 20 February, 2023 <br> Nalanda Institute of Technology, Bhubaneswar <span style="color: red;"><br>Hackathon ended<br><font size="7" color="#f18e1f">Next season coming soon!</font></span></p> -->
+      <!-- <div><a href="https://s68pawtvo42.typeform.com/to/Fkd2rAMz" target="_blank" class="about-btn scrollto">Register Now!</a></div><br> -->
+       <!-- <p class="mb-4 pb-0">Registration <span style="color: #f18e1f;">closed</span></p> -->
+      <!-- <p class="mb-4 pb-0">Check the list of <span style="color: #f18e1f;">shortlisted teams</span></p> -->
+      <!-- <div><a href="./assets/template/innovate-odisha-selected-teams.pdf" target="_blank" class="about-btn scrollto">Results out!</a></div> -->
+      <!-- <p class="mb-4 pb-0">Selected <span style="color: #f18e1f;">September&nbsp;19</span></p> -->
+      <!-- <p class="mb-4 pb-0">Click to see season&nbsp;1 <span style="color: #f18e1f;">Aftermovie</span></p>
+      <a href="https://youtu.be/td9WEwEPV5c" class="glightbox play-btn mb-4"></a> -->
+      <!-- <div><a href="./assets/template/Innovate Odisha Phase-1 Results.pdf" target="_blank" class="about-btn scrollto">Download Results</a></div> -->
+      <!-- <div><a href="./assets/template/Innovate Odisha - Bus Route Chart.pdf" target="_blank" class="about-btn scrollto">Download Bus Route Chart</a></div> -->
+    </div>
+  </section><!-- End Hero Section -->
+
+
+    
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  
+  <script src="assets/js/main.js"></script>
+
+  
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+    <script>
+      async function generateTicket() {
+        const name = document.getElementById("name").value;
+        const team = document.getElementById("team").value;
+        const theme = document.getElementById("theme").value;
+
+        if (!name || !team || !theme) {
+          alert("Please fill out all fields!");
+          return;
+        }
+
+        const ticketUrl = "./assets/template/ticket.pdf";
+        const existingPdfBytes = await fetch(ticketUrl).then((res) =>
+          res.arrayBuffer()
+        );
+
+        const pdfDoc = await PDFLib.PDFDocument.load(existingPdfBytes);
+        const font = await pdfDoc.embedFont(PDFLib.StandardFonts.Helvetica);
+        const firstPage = pdfDoc.getPages()[0];
+        const fontSize = 12;
+        firstPage.drawText(name, { x: 490, y: 138, size: fontSize, font });
+        firstPage.drawText(team, { x: 490, y: 97, size: fontSize, font });
+        firstPage.drawText(theme, { x: 490, y: 54, size: fontSize, font });
+
+        const pdfBytes = await pdfDoc.save();
+        const blob = new Blob([pdfBytes], { type: "application/pdf" });
+        const url = URL.createObjectURL(blob);
+
+        document.getElementById("ticketPreview").style.display = "block";
+        document.getElementById("ticketImage").src = url;
+
+        const linkedinCaption =
+          "Hello connections, I'm excited to share that I'll be attending Innovate Odisha 2.0 which is a prestigious state level hackathon which brings mentors, industry leaders and innovators all under one roof.";
+
+        const linkedinShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(
+          url
+        )}&text=${encodeURIComponent(linkedinCaption)}`;
+
+        document.getElementById("linkedinShare").href = linkedinShareUrl;
+
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = "hackathon_ticket.pdf";
+        link.click();
+      }
+    </script>
+  </body>
+</html>
