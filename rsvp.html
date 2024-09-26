@@ -159,14 +159,14 @@
           <option value="Industry Automation">Industry Automation</option>
           <option value="Climate Tech">Climate Tech</option>
         </select>
-        <button type="button" onclick="generateTicket()">
+        <button id="generate" type="submit">
           Generate Ticket
         </button>
       </form>
-
+      
       <div class="ticket-preview" id="ticketPreview" style="display: none">
         <!-- <h2>Your Ticket Preview</h2> -->
-        <img id="ticketImage" src="" alt="Ticket Preview" />
+        <a id="preview" href="#" target="_blank" rel="noopener noreferrer">View Ticket</a>
         <a id="linkedinShare" href="#" class="share-button" target="_blank"
           >Share on LinkedIn</a
         >
@@ -174,17 +174,7 @@
     </div>
 
     <!-- end of rsvp section  -->
-      <!-- <h1 class="mb-4 pb-0">Innovate Odisha - Season&nbsp;2<br><span>28-29 September</span> 2024</h1> -->
-      <!-- <p class="mb-4 pb-0">19 - 20 February, 2023 <br> Nalanda Institute of Technology, Bhubaneswar <span style="color: red;"><br>Hackathon ended<br><font size="7" color="#f18e1f">Next season coming soon!</font></span></p> -->
-      <!-- <div><a href="https://s68pawtvo42.typeform.com/to/Fkd2rAMz" target="_blank" class="about-btn scrollto">Register Now!</a></div><br> -->
-       <!-- <p class="mb-4 pb-0">Registration <span style="color: #f18e1f;">closed</span></p> -->
-      <!-- <p class="mb-4 pb-0">Check the list of <span style="color: #f18e1f;">shortlisted teams</span></p> -->
-      <!-- <div><a href="./assets/template/innovate-odisha-selected-teams.pdf" target="_blank" class="about-btn scrollto">Results out!</a></div> -->
-      <!-- <p class="mb-4 pb-0">Selected <span style="color: #f18e1f;">September&nbsp;19</span></p> -->
-      <!-- <p class="mb-4 pb-0">Click to see season&nbsp;1 <span style="color: #f18e1f;">Aftermovie</span></p>
-      <a href="https://youtu.be/td9WEwEPV5c" class="glightbox play-btn mb-4"></a> -->
-      <!-- <div><a href="./assets/template/Innovate Odisha Phase-1 Results.pdf" target="_blank" class="about-btn scrollto">Download Results</a></div> -->
-      <!-- <div><a href="./assets/template/Innovate Odisha - Bus Route Chart.pdf" target="_blank" class="about-btn scrollto">Download Bus Route Chart</a></div> -->
+      
     </div>
   </section><!-- End Hero Section -->
 
@@ -210,150 +200,47 @@
 
 <script>
 
-    async function generateTicket() {
-        const name = document.getElementById("name").value;
-        const team = document.getElementById("team").value;
-        const theme = document.getElementById("theme").value;
+  document.getElementById('rsvpForm').addEventListener('submit', async (e) => {
+                e.preventDefault();
 
-        if (!name || !team || !theme) {
-            alert("Please fill out all fields!");
-            return;
-        }
+                const submitBtn = document.getElementById('generate');
+                const name = document.getElementById('name').value;
+                const team = document.getElementById('team').value;
+                const theme = document.getElementById('theme').value;
 
-        const ticketUrl = './assets/template/ticket.pdf';
-        const existingPdfBytes = await fetch(ticketUrl).then(res => res.arrayBuffer());
+                const caption = encodeURIComponent('Check out my Innovate Odisha ticket!');
 
-        const pdfDoc = await PDFLib.PDFDocument.load(existingPdfBytes);
-        const font = await pdfDoc.embedFont(PDFLib.StandardFonts.Helvetica);
-        const firstPage = pdfDoc.getPages()[0];
-        const fontSize = 18;
-        firstPage.drawText(name, { x: 150, y: 300, size: fontSize, font });
-        firstPage.drawText(team, { x: 150, y: 270, size: fontSize, font });
-        firstPage.drawText(theme, { x: 150, y: 240, size: fontSize, font });
-
-        const pdfBytes = await pdfDoc.save();
-        const blob = new Blob([pdfBytes], { type: 'application/pdf' });
-        const url = URL.createObjectURL(blob);
-
-        // Generate the PNG version for download
-        convertPdfToPng(url);
-
-        // Share to LinkedIn with the PDF
-        shareToLinkedIn(blob);
-    }
-
-    function convertPdfToPng(pdfUrl) {
-        const canvas = document.createElement('canvas');
-        const ctx = canvas.getContext('2d');
-        const img = new Image();
-        img.src = pdfUrl;
-        img.onload = function () {
-            canvas.width = img.width;
-            canvas.height = img.height;
-            ctx.drawImage(img, 0, 0);
-            const pngUrl = canvas.toDataURL('image/png');
-
-            // Set the download link for the PNG image
-            document.getElementById("downloadPng").href = pngUrl;
-        };
-    }
-
-    async function shareToLinkedIn(blob) {
-        // Replace with your LinkedIn access token
-        const accessToken = 'YOUR_ACCESS_TOKEN';
-        const personURN = 'urn:li:person:YOUR_PERSON_URN';
-        const apiUrl = 'https://api.linkedin.com/v2/assets?action=registerUpload';
-
-        // 1. Register the upload
-        const registerUploadResponse = await fetch(apiUrl, {
-            method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${accessToken}`,
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                registerUploadRequest: {
-                    recipes: [
-                        'urn:li:digitalmediaRecipe:feedshare-image'
-                    ],
-                    owner: personURN,
-                    serviceRelationships: [
-                        {
-                            relationshipType: 'OWNER',
-                            identifier: 'urn:li:userGeneratedContent'
-                        }
-                    ]
-                }
-            })
-        });
-
-        const registerUploadData = await registerUploadResponse.json();
-        const uploadUrl = registerUploadData.value.uploadMechanism.com.linkedin.digitalmedia.uploading.MediaUploadHttpRequest.uploadUrl;
-        const asset = registerUploadData.value.asset;
-
-        // 2. Upload the PDF
-        const formData = new FormData();
-        formData.append('file', blob);
-
-        const uploadResponse = await fetch(uploadUrl, {
-            method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${accessToken}`,
-            },
-            body: blob
-        });
-
-        if (!uploadResponse.ok) {
-            alert('Failed to upload the asset to LinkedIn.');
-            return;
-        }
-
-        // 3. Post to LinkedIn with the uploaded asset
-        const postText = "Hello connections, I'm excited to share that I'll be attending Innovate Odisha 2.0 which is a prestigious state level hackathon which brings mentors, industry leaders and innovators all under one roof.";
-        const postUrl = 'https://api.linkedin.com/v2/ugcPosts';
-
-        const postResponse = await fetch(postUrl, {
-            method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${accessToken}`,
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                author: personURN,
-                lifecycleState: 'PUBLISHED',
-                specificContent: {
-                    'com.linkedin.ugc.ShareContent': {
-                        shareCommentary: {
-                            text: postText
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Generating...';
+                try {
+                    const response = await fetch('https://alleged-catharine-repository-93a68355.koyeb.app/generate-ticket', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
                         },
-                        shareMediaCategory: 'IMAGE',
-                        media: [
-                            {
-                                status: 'READY',
-                                description: {
-                                    text: 'Hackathon Event Ticket'
-                                },
-                                media: asset,
-                                title: {
-                                    text: 'Hackathon Ticket'
-                                }
-                            }
-                        ]
-                    }
-                },
-                visibility: {
-                    'com.linkedin.ugc.MemberNetworkVisibility': 'PUBLIC'
-                }
-            })
-        });
+                        body: JSON.stringify({
+                            name,
+                            team,
+                            theme,
+                            url: 'https://innovate-odisha.vercel.app/assets/template/ticket.pdf'
+                        }),
+                    });
 
-        if (postResponse.ok) {
-            alert('Successfully shared on LinkedIn!');
-        } else {
-            alert('Failed to share the post on LinkedIn.');
-        }
-    }
-</script>
+                    const data = await response.json();
+                    if (response.ok) {
+                      document.getElementById('ticketPreview').style.display = 'block';
+                      document.getElementById('preview').href = data.pdfUrl;
+                      document.getElementById('linkedinShare').href = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(data.pdfUrl)}&text=${caption}`;
+                      submitBtn.textContent = 'Ticket Generated';
+                    } else {
+                        throw new Error(data.error || 'Failed to generate ticket');
+                    }
+                } catch (error) {
+                    console.error('Error:', error);
+                    document.getElementById('result').textContent = `Error: ${error.message}`;
+                }
+            });
+  </script>
 
   </body>
 </html>
